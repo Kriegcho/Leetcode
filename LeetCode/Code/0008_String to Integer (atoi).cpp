@@ -1,4 +1,4 @@
-#include <string>
+Ôªø#include <string>
 #include <cctype>
 #include <cmath>
 #include <algorithm>
@@ -48,7 +48,7 @@ public:
 		if (b == -1 || b >= s.length()) return 0;
 		if (e == -1) e = s.length() - 1;
 		while (b < e && s[b] == '0') b++;
-		if (e - b > 11) e = b + 11; // ≥¨int≤ª≥¨long long
+		if (e - b > 11) e = b + 11; // Ë∂Öint‰∏çË∂Ölong long
 		ans = stoll(s.substr(b, e - b + 1));
 		if (!f) ans = -ans;
 		ans = min(ans, (long long)pow(2, 31) - 1);
