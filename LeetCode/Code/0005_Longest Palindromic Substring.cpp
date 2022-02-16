@@ -11,23 +11,27 @@ class Solution {
 	};
 public:
 	string longestPalindrome(string s) {
-		int len = s.length();
-		vector<vector<st>> dp(len + 1, vector<st>(len + 1));
-		dp[len][len].a = dp[len][len].b = len - 1;
-		for (int i = len - 1; i >= 1; i--)
-			for (int j = i; j <= len; j++)
+		string t = "$#";
+		for (int i = 0; i < s.size(); ++i) {
+			t += s[i];
+			t += '#';
+		}
+		vector<int> len(t.size(), 0);
+		int sc = 0, sr = 0, ansc = 0, ansr = 0; // sc表示当前len数组取最大值的位置 sr表示以sc为中心的最大子串的最右端位置
+		for (int i = 1; i < t.size(); i++) {
+			len[i] = sr > i ? min(len[2 * sc - i], sr - i) : 1; // 2 * sc - i是i关于sc对称的位置
+			while (t[i + len[i]] == t[i - len[i]]) len[i]++;
+			if (sr < i + len[i])
 			{
-				if (s[i - 1] == s[j - 1] && dp[i + 1][j - 1].length() == max(0, j - i - 2))
-				{
-					dp[i][j].a = i - 1;
-					dp[i][j].b = j - 1;
-				}
-				else
-				{
-					if (dp[i][j - 1].length() < dp[i + 1][j].length()) dp[i][j] = dp[i + 1][j];
-					else dp[i][j] = dp[i][j - 1];
-				}
+				sr = i + len[i];
+				sc = i;
 			}
-		return s.substr(dp[1][len].a, dp[1][len].length() + 1);
+			if (ansr < len[i])
+			{
+				ansr = len[i];
+				ansc = i;
+			}
+		}
+		return s.substr((ansc - ansr) / 2, ansr - 1);
 	}
 };
