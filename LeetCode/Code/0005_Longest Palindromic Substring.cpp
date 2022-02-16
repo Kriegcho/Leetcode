@@ -1,4 +1,4 @@
-#include <string>
+ï»¿#include <string>
 #include <vector>
 #include <algorithm>
 using namespace std;
@@ -17,9 +17,9 @@ public:
 			t += '#';
 		}
 		vector<int> len(t.size(), 0);
-		int sc = 0, sr = 0, ansc = 0, ansr = 0; // sc±íÊ¾µ±Ç°lenÊı×éÈ¡×î´óÖµµÄÎ»ÖÃ sr±íÊ¾ÒÔscÎªÖĞĞÄµÄ×î´ó×Ó´®µÄ×îÓÒ¶ËÎ»ÖÃ
+		int sc = 0, sr = 0, ansc = 0, ansr = 0; // scè¡¨ç¤ºå½“å‰lenæ•°ç»„å–æœ€å¤§å€¼çš„ä½ç½® srè¡¨ç¤ºä»¥scä¸ºä¸­å¿ƒçš„æœ€å¤§å­ä¸²çš„æœ€å³ç«¯ä½ç½®
 		for (int i = 1; i < t.size(); i++) {
-			len[i] = sr > i ? min(len[2 * sc - i], sr - i) : 1; // 2 * sc - iÊÇi¹ØÓÚsc¶Ô³ÆµÄÎ»ÖÃ
+			len[i] = sr > i ? min(len[2 * sc - i], sr - i) : 1; // 2 * sc - iæ˜¯iå…³äºscå¯¹ç§°çš„ä½ç½®
 			while (t[i + len[i]] == t[i - len[i]]) len[i]++;
 			if (sr < i + len[i])
 			{

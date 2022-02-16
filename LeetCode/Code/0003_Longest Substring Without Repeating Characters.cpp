@@ -1,4 +1,4 @@
-#include <string>
+ï»¿#include <string>
 #include <map>
 using namespace std;
 
@@ -10,7 +10,7 @@ public:
 		for (int i = 0; i < s.length(); i++)
 		{
 			if (m.find(s[i]) == m.end()) anst++;
-			else if (m[s[i]] < pos) anst++; // Ôø¾­³öÏÖ¹ýµ«²»ÔÚµ±Ç°ÐòÁÐÖÐ
+			else if (m[s[i]] < pos) anst++; // æ›¾ç»å‡ºçŽ°è¿‡ä½†ä¸åœ¨å½“å‰åºåˆ—ä¸­
 			else
 			{
 				pos = m[s[i]] + 1;
