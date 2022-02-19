@@ -1,5 +1,18 @@
 ﻿#include <vector>
-#include <set>
 using namespace std;
 
-class Solution {public:	int removeDuplicates(vector<int>& nums) {		set<int> s;		for (int i = 0; i < nums.size(); i++) if (s.find(nums[i]) == s.end()) s.insert(nums[i]);		set<int>::iterator it = s.begin();		int ind = 0;		while (it != s.end())		{			nums[ind] = *it;			it++;			ind++;		}		return s.size();	}};
+class Solution {
+public:
+	int removeDuplicates(vector<int>& nums) {
+		bool f[210] = { false };
+		int ans = 0;
+		for (int i = 0; i < nums.size(); i++)
+			if (!f[nums[i] + 100])
+			{
+				f[nums[i] + 100] = true;
+				nums[ans] = nums[i];
+				ans++;
+			}
+		return ans;
+	}
+};
