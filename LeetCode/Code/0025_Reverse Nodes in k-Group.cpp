@@ -24,28 +24,38 @@ struct ListNode {
 class Solution {
 public:
 	ListNode * reverseKGroup(ListNode* head, int k) {
-		ListNode* last = head;
-		vector<ListNode*> ans;
-		stack<ListNode*> st;
+		ListNode *last = head, *ans = 0, *anse = 0, *kb = 0;
 		int c = 1;
 		while (head)
 		{
+			ListNode* temp = head->next;
+			head->next = kb;
+			kb = head;
 			if (c == 1) last = head;
-			st.push(head);
 			if (c < k) c++;
 			else
 			{
-				while (!st.empty())
-				{
-					ans.push_back(st.top());
-					st.pop();
-				}
+				if (anse) anse->next = kb;
+				else ans = kb;
+				anse = last;
+				kb = 0;
 				c = 1;
 			}
-			head = head->next;
+			head = temp;
 		}
-		for (int i = 0; i + 1 < ans.size(); i++) ans[i]->next = ans[i + 1];
-		ans[ans.size() - 1]->next = c > 1 ? last : 0;
-		return ans[0];
+		if (c > 1)
+		{
+			last = 0;
+			while (kb)
+			{
+				ListNode* temp = kb->next;
+				kb->next = last;
+				last = kb;
+				kb = temp;
+			}
+			anse->next = last;
+		}
+		else anse->next = 0;
+		return ans;
 	}
 };
