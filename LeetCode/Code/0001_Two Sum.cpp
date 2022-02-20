@@ -1,5 +1,4 @@
-﻿#include <iostream>
-#include <vector>
+﻿#include <vector>
 #include <map>
 using namespace std;
 
@@ -35,16 +34,3 @@ public:
 		return ans;
 	}
 };
-
-int main()
-{
-	Solution s;
-	int N, target;
-	cin >> N >> target;
-	vector<int> nums(N), ans;
-	for (int i = 0; i < N; i++) cin >> nums[i];
-	ans = s.twoSum(nums, target);
-	cout << ans[0] << " " << ans[1];
-	system("pause");
-	return 0;
-}
