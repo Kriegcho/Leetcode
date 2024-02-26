@@ -17,7 +17,7 @@ public:
 					ans.push_back({ target });
 				else
 				{
-					vector<vector<int>> temp = combinationSum(cand, i, target - i); // 这里将minc改变成i是为了去重
+					vector<vector<int>> temp = combinationSum(cand, i, target - i); // 从小到大，这里将minc改变成i是为了去重，这样后面不会再选择更小的candidate
 					for (auto vec : temp)
 					{
 						vec.push_back(i);
