@@ -1,4 +1,4 @@
-#include <vector>
+ï»¿#include <vector>
 
 using namespace std;
 
@@ -9,12 +9,12 @@ public:
 		for (int i = 0; i < size; i++)
 		{
 			if ((i + 1) != nums[i] && nums[i] <= size && nums[i] > 0 
-				&& nums[nums[i] - 1] != nums[i]) // ¶Ô»»µÄÊı×ÖÒÑ¾­ÊÇÕıÈ·Î»ÖÃ¾Í²»»»ÁË£¬·ñÔò»áÒ»Ö±¼ì²é
+				&& nums[nums[i] - 1] != nums[i]) // å¯¹æ¢çš„æ•°å­—å·²ç»æ˜¯æ­£ç¡®ä½ç½®å°±ä¸æ¢äº†ï¼Œå¦åˆ™ä¼šä¸€ç›´æ£€æŸ¥
 			{
 				int temp = nums[i];
 				nums[i] = nums[temp - 1];
 				nums[temp - 1] = temp;
-				i--; // ¼ì²é»»»ØÀ´µÄÕâ¸öÊÇ²»ÊÇ¶ÔµÄ
+				i--; // æ£€æŸ¥æ¢å›æ¥çš„è¿™ä¸ªæ˜¯ä¸æ˜¯å¯¹çš„
 			}
 		}
 		for (int i = 0; i < size; i++)
