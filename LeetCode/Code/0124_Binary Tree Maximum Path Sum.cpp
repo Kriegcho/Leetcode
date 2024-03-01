@@ -1,4 +1,4 @@
-#include <algorithm>
+ï»¿#include <algorithm>
 
 using namespace std;
 
@@ -12,10 +12,10 @@ struct TreeNode {
 };
 
 class Solution {
-	int solve(TreeNode* node, int& maxp) // maxp ´ÓnodeÆðµãµÄ×î´ó´øÈ¨Â·¾¶µÄÈ¨Öµ
+	int solve(TreeNode* node, int& maxp) // maxp ä»Žnodeèµ·ç‚¹çš„æœ€å¤§å¸¦æƒè·¯å¾„çš„æƒå€¼
 	{
-		// ·ÖÖÎ£º×ó×ÓÊ÷£¬ÓÒ×ÓÊ÷£¬´ø¸ùÏàÁ¬ÈýÕßÈ¡×î´ó
-		// ´ø¸ùÏàÁ¬¼´Çó¸ù·Ö±ðÏò×óÓÒ×ÓÊ÷³ö·¢µÄÒ»Ìõ×î´ó´øÈ¨Â·¾¶
+		// åˆ†æ²»ï¼šå·¦å­æ ‘ï¼Œå³å­æ ‘ï¼Œå¸¦æ ¹ç›¸è¿žä¸‰è€…å–æœ€å¤§
+		// å¸¦æ ¹ç›¸è¿žå³æ±‚æ ¹åˆ†åˆ«å‘å·¦å³å­æ ‘å‡ºå‘çš„ä¸€æ¡æœ€å¤§å¸¦æƒè·¯å¾„
 		if (node->left == nullptr && node->right == nullptr)
 		{
 			if (node->val > 0)
