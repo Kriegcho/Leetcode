@@ -25,7 +25,7 @@ public:
 	vector<vector<string>> partition(string s) {
 		int n = s.length();
 		vector<vector<bool>> flag(n, vector<bool>(n, true));
-		for (int i = 0; i < n - 1; i++)
+		for (int i = n - 2; i >= 0; i--)
 			for (int j = i + 1; j < n; j++)
 				flag[i][j] = (s[i] == s[j]) && flag[i + 1][j - 1];
 		vector<vector<string>> ans;
@@ -34,9 +34,3 @@ public:
 		return ans;
 	}
 };
-
-int main()
-{
-	Solution s;
-	s.partition("abbab");
-}
