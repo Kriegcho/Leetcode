@@ -35,10 +35,3 @@ public:
 		return true;
 	}
 };
-
-int main()
-{
-	Solution s;
-	vector<vector<int>> vec{ {1, 4}, {2,4},{3,1},{3,2} };
-	s.canFinish(5, vec);
-}
