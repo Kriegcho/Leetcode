@@ -20,35 +20,28 @@ struct ListNode {
 class Solution {
 public:
 	ListNode * removeNthFromEnd(ListNode* head, int n) {
-		ListNode *rl = 0, *th = head, *ans = 0;
-		while (th)
+		int c = 0, k = 0;
+		ListNode* node = head;
+		while (node != nullptr)
 		{
-			ListNode* t = th->next;
-			th->next = rl;
-			rl = th;
-			th = t;
-		}
-		int c = 1;
-		ListNode *last = 0, *rlt = rl;
-		while (rlt)
-		{
-			if (c == n)
-			{
-				if (last) last->next = rlt->next;
-				else rl = rlt->next;
-				break;
-			}
-			last = rlt;
-			rlt = rlt->next;
+			node = node->next;
 			c++;
 		}
-		while (rl)
+		if (n == c)
+			return head->next;
+		node = head;
+		while (node != nullptr)
 		{
-			ListNode* t = rl->next;
-			rl->next = ans;
-			ans = rl;
-			rl = t;
+			k++;
+			if (k == c - n)
+			{
+				ListNode* rem = node->next;
+				if (rem)
+					node->next = rem->next;
+				break;
+			}
+			node = node->next;
 		}
-		return ans;
+		return head;
 	}
 };
