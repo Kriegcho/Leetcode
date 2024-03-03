@@ -18,6 +18,8 @@ public:
 		TreeNode* r = lowestCommonAncestor(root->right, p, q);
 		if (l == nullptr && r == nullptr)
 			return nullptr;
+		else if (l != nullptr && r != nullptr)
+			return root;
 		return l == nullptr ? r : l;
 	}
 };
