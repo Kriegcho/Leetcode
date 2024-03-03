@@ -33,7 +33,7 @@ public:
 					else
 						break;
 				}
-				if (minc == -1 || minc == INT_MAX)
+				if (minc == INT_MAX)
 					dp[i] = -1;
 				else
 					dp[i] = minc + 1;
