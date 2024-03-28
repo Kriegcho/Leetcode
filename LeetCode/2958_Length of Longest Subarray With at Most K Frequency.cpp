@@ -33,10 +33,7 @@ public:
 			{
 				m[nums[l]]--;
 				if (nums[l] == cur)
-				{
 					flag = true;
-					r++;
-				}
 				l++;
 			}
 		}
