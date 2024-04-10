@@ -29,10 +29,3 @@ public:
 		return ans;
 	}
 };
-
-int main()
-{
-	vector<int> vec{10,5,2,6};
-	Solution s;
-	s.numSubarrayProductLessThanK(vec, 100);
-}
