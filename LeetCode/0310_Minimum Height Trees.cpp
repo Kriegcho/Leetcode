@@ -1,31 +1,35 @@
 ﻿#include <vector>
+#include <list>
 using namespace std; 
 
 class Solution {
-	void dfs(int pos, const vector<vector<int>>& ve, vector<int> path, vector<bool>& visit, vector<int>& maxd)
+	void dfs(int pos, const vector<list<int>>& ve, vector<int>& path, vector<int>& ans, vector<bool>& visit, int& max_d, int& maxd_i)
 	{
-		path.push_back(pos);
-		for (auto vi : ve[pos])
+		if (max_d < path.size())
 		{
-			if (!visit[vi])
+			max_d = path.size();
+			maxd_i = pos;
+			ans.clear();
+			if (path.size() % 2 == 0)
+				ans.push_back(path[path.size() / 2 - 1]);
+			ans.push_back(path[path.size() / 2]);
+		}
+		for (int next : ve[pos])
+		{
+			if (!visit[next])
 			{
-				for (int j = 0; j < path.size(); j++)
-					if (maxd[path[j]] < path.size() - j)
-						maxd[path[j]] = path.size() - j;
-				if (maxd[vi] < path.size())
-					maxd[vi] = path.size();
-				visit[vi] = true;
-				dfs(vi, ve, path, visit, maxd);
-				visit[vi] = false;
+				path.push_back(next);
+				visit[next] = true;
+				dfs(next, ve, path, ans, visit, max_d, maxd_i);
+				visit[next] = false;
+				path.pop_back();
 			}
 		}
-
-		path.pop_back();
 	}
 public:
 	vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
-		vector<int> path;
-		vector<vector<int>> ve(n);
+		vector<int> path, ans;
+		vector<list<int>> ve(n);
 		for (auto e : edges)
 		{
 			ve[e[0]].push_back(e[1]);
@@ -33,16 +37,16 @@ public:
 		}
 		vector<bool> visit(n, false);
 		visit[0] = true;
-		vector<int> maxd(n, 0);
-		dfs(0, ve, path, visit, maxd);
-		int mind = n;
-		for (int i : maxd)
-			if (mind > i)
-				mind = i;
-		vector<int> ans;
-		for (int i = 0; i < n; i++)
-			if (maxd[i] == mind)
-				ans.push_back(i);
+		path.push_back(0);
+		int max_d = 0, maxd_i = 0;
+		dfs(0, ve, path, ans, visit, max_d, maxd_i);
+		path.clear();
+		visit.assign(n, false);
+		max_d = 0;
+		int start = maxd_i;
+		visit[start] = true;
+		path.push_back(start);
+		dfs(start, ve, path, ans, visit, max_d, maxd_i);
 		return ans;
 	}
 };
