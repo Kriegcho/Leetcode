@@ -59,9 +59,3 @@ public:
 		return sum;
 	}
 };
-
-int main() {
-	Solution s;
-	vector<int> vec{ 0 };
-	s.candy(vec);
-}
